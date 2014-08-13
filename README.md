@@ -1,3 +1,34 @@
+# VATSIM SSO Provider
+I forked this awesome gem for one reason : adding VATSIM SSO provider !
+Thanks to NoamB for providing us this great gem.
+
+Sample sorcery setup for consuming VATSIM SSO ( in config/initializers/sorcery.rb )
+It is based on the NoamB tutorial for external login : https://github.com/NoamB/sorcery/wiki/External
+
+    Rails.application.config.sorcery.submodules = [:external]
+
+    # Here you can configure each submodule's features.
+    Rails.application.config.sorcery.configure do |config|
+
+
+        config.external_providers = [:vatsim]
+
+        #add this file to .gitignore BEFORE putting any secret keys in here, or use a system like Figaro to abstract it!!!
+
+        config.vatsim.key = "YOUR_VATSIM_CONSUMER_KEY"
+        config.vatsim.secret = IO.read("YOUR_VATSIM_PRIVATE_KEY_PATH")
+        config.vatsim.callback_url = "YOUR_DOMAIN_NAME/oauth/callback?provider=vatsim"
+        config.vatsim.user_info_mapping = {:cid => "id"} // Feel free to complete mapping according to your User model
+
+        config.user_config do |user|
+            user.username_attribute_names = [:cid]
+            user.authentications_class = Authentication
+        end
+        config.user_class = "User"
+    end
+
+
+
 [![Build Status](https://travis-ci.org/NoamB/sorcery.svg?branch=master)](https://travis-ci.org/NoamB/sorcery)
 [![Code Climate](https://codeclimate.com/github/NoamB/sorcery.png)](https://codeclimate.com/github/NoamB/sorcery)
 
@@ -12,6 +43,7 @@ Bates's railscasts about it.
 **Rails 4 status:** [Sorcery 0.8.6](http://rubygems.org/gems/sorcery/versions/0.8.6) is fully tested and ready for Rails 4.0 and 4.1.
 
 https://github.com/NoamB/sorcery/wiki/Simple-Password-Authentication
+
 
 ## Philosophy
 
