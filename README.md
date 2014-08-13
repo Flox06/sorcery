@@ -15,8 +15,8 @@ It is based on the NoamB tutorial for external login : https://github.com/NoamB/
 
         #add this file to .gitignore BEFORE putting any secret keys in here, or use a system like Figaro to abstract it!!!
 
-        config.vatsim.key = "YOUR_VATSIM_CONSUMER_KEY"
-        config.vatsim.secret = IO.read("YOUR_VATSIM_PRIVATE_KEY_PATH")
+        config.vatsim.key = "YOUR_VATSIMSSO_CONSUMER_KEY"
+        config.vatsim.secret = IO.read("YOUR_VATSIMSSO_PRIVATE_KEY_PATH")
         config.vatsim.callback_url = "YOUR_DOMAIN_NAME/oauth/callback?provider=vatsim"
         config.vatsim.user_info_mapping = {:cid => "id"} // Feel free to complete mapping according to your User model
 
@@ -26,6 +26,8 @@ It is based on the NoamB tutorial for external login : https://github.com/NoamB/
         end
         config.user_class = "User"
     end
+
+
 
 
 
