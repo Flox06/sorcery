@@ -19,10 +19,7 @@ module Sorcery
 
       def get_consumer
 
-        @configuration = @configuration = {site: @site}
-        Rails.logger.debug(@configuration)
-        Rails.logger.debug(@site)
-        OAuth::Consumer.new(@key, OpenSSL::PKey::RSA.new(@secret),@configuration)
+        OAuth::Consumer.new(@key, OpenSSL::PKey::RSA.new(@secret),@configuration[:site] = @site)
       end
 
 
