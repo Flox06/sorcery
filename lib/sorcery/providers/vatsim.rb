@@ -18,8 +18,8 @@ module Sorcery
       end
 
       def get_consumer
-
-        OAuth::Consumer.new(@key, OpenSSL::PKey::RSA.new(@secret),@configuration[:site] = @site)
+        @configuration[:site] = @site
+        OAuth::Consumer.new(@key, OpenSSL::PKey::RSA.new(@secret),@configuration)
       end
 
 
