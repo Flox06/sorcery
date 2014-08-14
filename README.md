@@ -19,6 +19,7 @@ It is based on the NoamB tutorial for external login : https://github.com/NoamB/
         config.vatsim.secret = IO.read("YOUR_VATSIMSSO_PRIVATE_KEY_PATH")
         config.vatsim.callback_url = "YOUR_DOMAIN_NAME/oauth/callback?provider=vatsim"
         config.vatsim.user_info_mapping = {:cid => "id"} // Feel free to complete mapping according to your User model
+        config.vatsim.site = "http://sso.hardern.net/server" // select proper service URL
 
         config.user_config do |user|
             user.username_attribute_names = [:cid]
