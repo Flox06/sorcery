@@ -3,12 +3,12 @@ module Sorcery
     class Vatsim < Base
       include Protocols::Oauth
 
-      attr_accessor :access_token_path, :authorize_path, :request_token_path
+      attr_accessor :access_token_path, :authorize_path, :request_token_path, :site
 
 
       def initialize
         @configuration = {
-            site: 'https://cert.vatsim.net/sso',
+            site: @site,
             authorize_path: '/auth/pre_login',
             request_token_path: '/api/login_token',
             access_token_path: '/api/login_return',
