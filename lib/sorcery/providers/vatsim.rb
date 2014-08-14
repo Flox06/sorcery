@@ -7,8 +7,8 @@ module Sorcery
 
 
       def initialize
+        @site        = ''
         @configuration = {
-            site: @site,
             authorize_path: '/auth/pre_login',
             request_token_path: '/api/login_token',
             access_token_path: '/api/login_return',
@@ -18,7 +18,7 @@ module Sorcery
       end
 
       def get_consumer
-        OAuth::Consumer.new(@key, OpenSSL::PKey::RSA.new(@secret),@configuration)
+        OAuth::Consumer.new(@key, OpenSSL::PKey::RSA.new(@secret),@configuration = {site: @site})
       end
 
 
